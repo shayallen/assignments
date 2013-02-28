@@ -14,15 +14,27 @@ int main(void){
 	//operator assignment logic
 	if(get_operator == 0){
 		operator = '+';
+		if(operator == '+'){
+			real_answer = value1 + value2;
+		}
 	}else if(get_operator == 1){
 		operator = '-';
+		if(operator == '-'){
+			real_answer = value1 - value2;
+		}
 	}else if(get_operator == 2){
 		operator = '/';
+		if(operator == '/'){
+			real_answer = value1 / value2;
+		}
 	}else{
 		operator = '*';
+		if(operator == '*'){
+			real_answer = value1 * value2;
+		}
 	}
 
-	//Calculation of real answer for user_answer comparison	
+	/*Calculation of real answer for user_answer comparison	
 	if(operator == '+'){
 		real_answer = value1 + value2;
 	}else if(operator == '-'){
@@ -31,7 +43,7 @@ int main(void){
 		real_answer = value1 / value2;
 	}else if(operator == '*'){
 		real_answer = value1 * value2;
-	}
+	}*/
 	//User instructions
 	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
 	printf("Round answers to two decimal places\n");
