@@ -2,8 +2,9 @@
 
 #include <stdio.h>
 int main(void){
-	int value1,value2,user_answer,real_answer;
+	int value1,value2,user_answer;
 	char operator,get_operator;
+	float real_answer;
 
 	//variable asignments
 	srand(time(NULL));	
@@ -21,6 +22,9 @@ int main(void){
 	}else if(get_operator == 2){
 		operator = '/';
 		real_answer = value1 / value2;
+		//if(real_answer < 1){
+		//	real_answer
+		//}
 	}else{
 		operator = '*';
 		real_answer = value1 * value2;
