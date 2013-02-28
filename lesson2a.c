@@ -2,37 +2,51 @@
 
 #include <stdio.h>
 int main(void){
-	int value1,value2,answer,i;
-	char operator1,get_operator;
+	int value1,value2,user_answer,real_answer;
+	char operator,get_operator;
 
 	//variable asignments
-	i = 0;
 	srand(time(NULL));	
 	value1 = rand() % 999;
 	value2 = rand() % 999;
-	get_operator = rand() % 3;
+	get_operator = rand() % 4;
 
 	//operator assignment logic
 	if(get_operator == 0){
-		operator1='+';
+		operator = '+';
 	}else if(get_operator == 1){
-		operator1='-';
+		operator = '-';
 	}else if(get_operator == 2){
-		operator1='/';
+		operator = '/';
 	}else{
-		operator1='*';
+		operator = '*';
 	}
-
+	
+	//Calculation of real answer for user_answer comparison	
+	if(operator == '+'){
+		real_answer = value1 + value2;
+	}else if(operator == '-'){
+		real_answer = value1 - value2;
+	}else if(operator == '/'){
+		real_answer = value1 / value2;
+	}else if(operator == '*'){
+		real_answer = value1 * value2;
+	}
 	//User instructions
 	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
 	
 	//Assemble the math question
-	printf("%d %s %d = ",value1,operator1,value2);
-	scanf("%d\n", &answer);
-
+	printf("%d %c %d = ",value1,operator,value2);
+	scanf("%d\n", &user_answer);
+		
 	//Check the right answer
-	//if(answer == (value1
 	
+	if(user_answer == real_answer){
+		printf("Correct\n");
+	}else{
+		printf("Incorrect\n");
+	}
+	 
 	return 0;
 
 }
