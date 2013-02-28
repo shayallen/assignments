@@ -37,7 +37,7 @@ int main(void){
 	
 	//Assemble the math question
 	printf("%d %c %d = ",value1,operator,value2);
-	scanf("%d\n", &user_answer);
+	scanf("%d", &user_answer);
 		
 	//Check the right answer
 	
