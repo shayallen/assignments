@@ -2,30 +2,32 @@
 
 #include <stdio.h>
 int main(void){
-	int value1,value2,answer,assn_operator,i;
-	char operator1;
+	int value1,value2,answer,i;
+	char operator1,get_operator;
 
 	//variable asignments
 	i = 0;
 	srand(time(NULL));	
 	value1 = rand() % 999;
 	value2 = rand() % 999;
-	assn_operator = rand() % 3;
-	if(assn_operator == 0){
+	get_operator = rand() % 3;
+
+	//operator assignment logic
+	if(get_operator == 0){
 		operator1='+';
-	}else if(assn_operator == 1){
+	}else if(get_operator == 1){
 		operator1='-';
-	}else if(assn_operator == 2){
+	}else if(get_operator == 2){
 		operator1='/';
-	}else(assn_operator == 3){
+	}else{
 		operator1='*';
 	}
 
 	//User instructions
-	printf("Let's answer some randomly generated math questions. Simply enter the answer and press 'Enter'.\n");
+	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
 	
 	//Assemble the math question
-	printf("%d %d %d = ",value1,operator1,value2);
+	printf("%d %s %d = ",value1,operator1,value2);
 	scanf("%d\n", &answer);
 
 	//Check the right answer
