@@ -21,7 +21,7 @@ int main(void){
 	}else{
 		operator = '*';
 	}
-	
+
 	//Calculation of real answer for user_answer comparison	
 	if(operator == '+'){
 		real_answer = value1 + value2;
@@ -34,6 +34,7 @@ int main(void){
 	}
 	//User instructions
 	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
+	printf("Round answers to two decimal places\n");
 	
 	//Assemble the math question
 	printf("%d %c %d = ",value1,operator,value2);
