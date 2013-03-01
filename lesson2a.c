@@ -29,8 +29,8 @@ int main(void){
 	}
 
 	//User instructions
-	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
-	printf("Truncate answers to two decimal places.\n");
+	printf("Let's answer some randomly generated math questions. Truncate answers to two decimal places.\n");
+	printf("Simply enter the answer and press 'Enter'.\n");
 	
 	//Assemble the math question
 	printf("%.0f %c %.0f = ",value1,operator,value2);
