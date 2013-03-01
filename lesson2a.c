@@ -5,7 +5,7 @@
 int main(void){
 	char operator,get_operator;
 	float value1,value2,real_answer,user_answer;
-	//int value1,value2;
+	
 	//variable asignments
 	srand(time(NULL));	
 	value1 = rand() % 999;
@@ -44,7 +44,7 @@ int main(void){
 		printf("Incorrect\n");
 	}
 	
-	printf("%f     %f  \n", real_answer,user_answer); 
+	//printf("%f     %f  \n", real_answer,user_answer); 
 	return 0;
 
 }
