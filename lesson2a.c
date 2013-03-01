@@ -22,6 +22,7 @@ int main(void){
 	}else if(get_operator == 2){
 		operator = '/';
 		real_answer = value1 / value2;
+		real_answer = floor(real_answer*100)/100;
 	}else{
 		operator = '*';
 		real_answer = value1 * value2;
@@ -29,7 +30,7 @@ int main(void){
 
 	//User instructions
 	printf("Let's answer some randomly generated math questions.\nSimply enter the answer and press 'Enter'.\n");
-	printf("Round answers to two decimal places\n");
+	printf("Truncate answers to two decimal places.\n");
 	
 	//Assemble the math question
 	printf("%.0f %c %.0f = ",value1,operator,value2);
