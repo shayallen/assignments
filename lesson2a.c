@@ -1,11 +1,11 @@
 /* Lesson 2 project: The math problem should be randomly generated, using 2 numbers between 0 and 999, and with a randomly selected operation of +, -, *, /. If the user enters the correct response within 2 decimal places, output 'Correct', otherwise output 'Incorrect'.*/
 
 #include <stdio.h>
+#include <math.h>
 int main(void){
-	int value1,value2,user_answer;
 	char operator,get_operator;
-	float real_answer;
-
+	float value1,value2,real_answer,user_answer;
+	//int value1,value2;
 	//variable asignments
 	srand(time(NULL));	
 	value1 = rand() % 999;
@@ -22,9 +22,6 @@ int main(void){
 	}else if(get_operator == 2){
 		operator = '/';
 		real_answer = value1 / value2;
-		//if(real_answer < 1){
-		//	real_answer
-		//}
 	}else{
 		operator = '*';
 		real_answer = value1 * value2;
@@ -35,8 +32,8 @@ int main(void){
 	printf("Round answers to two decimal places\n");
 	
 	//Assemble the math question
-	printf("%d %c %d = ",value1,operator,value2);
-	scanf("%d", &user_answer);
+	printf("%.0f %c %.0f = ",value1,operator,value2);
+	scanf("%f", &user_answer);
 		
 	//Check the right answer
 	
@@ -45,7 +42,8 @@ int main(void){
 	}else{
 		printf("Incorrect\n");
 	}
-	 
+	
+	printf("%f     %f  \n", real_answer,user_answer); 
 	return 0;
 
 }
