@@ -36,15 +36,13 @@ int main(void){
 	printf("%.0f %c %.0f = ",value1,operator,value2);
 	scanf("%f", &user_answer);
 		
-	//Check the right answer
-	
+	//Check the right answer	
 	if(user_answer == real_answer){
 		printf("Correct\n");
 	}else{
 		printf("Incorrect\n");
 	}
-	
-	//printf("%f     %f  \n", real_answer,user_answer); 
+	 
 	return 0;
 
 }
