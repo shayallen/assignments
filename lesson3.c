@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 #include <math.h>
+
+int get_operator (char operator);
+
 int main(void){
 	char operator,get_operator;
 	float value1,value2,real_answer,user_answer;
