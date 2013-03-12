@@ -4,17 +4,36 @@
 #include <stdio.h>
 #include <math.h>
 
-int get_operator (char operator);
+float get_operator (float x, float y);
+int get_question_num();
 
 int main(void){
 	char operator,get_operator;
 	float value1,value2,real_answer,user_answer;
+	int a;
 
 	//variable asignments
 	srand(time(NULL));	
 	value1 = rand() % 999;
 	value2 = rand() % 999;
 	get_operator = rand() % 4;
+	a = 0;
+	//Number of questions prompt function
+	int get_question_num(){
+		printf("How many math questions would you like to answer up to 10?\n");
+		scanf("%d\n", &question_num);
+		if(question_num > 10){
+			printf("Please enter a number of 10 or lower.\n");
+			get_question_num ();
+		}else{
+			generate_questions (value1, get_operator, value2)
+			return (
+	}
+	}
+	//User instructions
+	//Prompt a user for the number of questions that they want to answer
+	printf("Let's answer some randomly generated math questions. Truncate answers to two decimal places.\n");
+	printf("Simply enter the answer and press 'Enter'.\n");
 
 	//operator assignment logic
 	if(get_operator == 0){
@@ -32,14 +51,16 @@ int main(void){
 		real_answer = value1 * value2;
 	}
 
-	//User instructions
-	printf("Let's answer some randomly generated math questions. Truncate answers to two decimal places.\n");
-	printf("Simply enter the answer and press 'Enter'.\n");
 
 	//Assemble the math question
 	printf("%.0f %c %.0f = ",value1,operator,value2);
 	scanf("%f", &user_answer);
 
+	
+	//Loop to ensure the correct amount of questions are answered
+	while (a < question_num){
+				
+	}
 	//Check the right answer	
 	if(user_answer == real_answer){
 		printf("Correct\n");
