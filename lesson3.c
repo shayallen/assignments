@@ -4,13 +4,30 @@
 #include <stdio.h>
 #include <math.h>
 
-float get_operator (float x, float y);
+float assn_operator (int get_operator){
+	srand(time(NULL));
+	int get_operator = rand () % 4;
+	switch(get_operator){
+		case 0:
+			return '+';
+		case 1:
+			return '-';
+		case 2:
+			return '/';
+		case 3:
+			return '*';
+		default:
+			return 0;
+	}
+	
+}
 int get_question_num();
 
+
 int main(void){
-	char operator,get_operator;
+	char operator;
 	float value1,value2,real_answer,user_answer;
-	int a;
+	int a, get_operator;
 
 	//variable asignments
 	srand(time(NULL));	
@@ -27,8 +44,8 @@ int main(void){
 			get_question_num ();
 		}else{
 			generate_questions (value1, get_operator, value2)
-			return (
-	}
+			return (0);
+		}
 	}
 	//User instructions
 	//Prompt a user for the number of questions that they want to answer
@@ -59,7 +76,7 @@ int main(void){
 	
 	//Loop to ensure the correct amount of questions are answered
 	while (a < question_num){
-				
+		
 	}
 	//Check the right answer	
 	if(user_answer == real_answer){

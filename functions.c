@@ -1,43 +1,66 @@
 #include<stdio.h>
-//variable declaration
-char operator;
-int x,y,result;
-float answer,real_answer,user_answer;
-
-//function for assigned variables
-float test_func(float x, float y){
-	float answer = x(operator)y;
-	return(answer);
-}
+#include<math.h>
 //Operator assignment logic
-char assn_operator(char operator){
+char assn_operator(){
+	srand(time(NULL));
 	int get_operator = rand () % 4;
-        if(get_operator == 0){
-                operator = '+';
-                real_answer = x + y;
-        }else if(get_operator == 1){
-                operator = '-';
-                real_answer = x - y;
-        }else if(get_operator == 2){
-                operator = '/';
-                real_answer = x / y;
-                real_answer = floor(real_answer*100)/100;
-        }else{
-                operator = '*';
-                real_answer = x * y;
-	return (operator)
-        }
+        switch(get_operator){
+		case 0:
+			return '+';
+		case 1:
+			return '-';
+		case 2:
+			return '/';
+		case 3:
+			return '*';
+		default:
+			return 0;
+	}
 
 	
 }
+float add(float x,float y){
+	return x+y;
+}
+
+float subtract(float x,float y){
+	return x-y;
+}
+
+float divide(float x,float y){
+	return x/y;
+}
+
+float multiply(float x,float y){
+	return x*y;
+}
+//Take operator assignment and calculate the real answer with the values provided
+float evaluate(char operator, float x, float y){
+	switch(operator){
+		case '+':
+			return add(x,y);
+		case '-':
+			return subtract(x,y);
+		case '/':
+			return divide(x,y);
+		case '*':
+			return multiply(x,y);
+		default:
+			return 0;
+	} 
+}
+
+
 int main(void){
+	char operator;
+	float x,y,result;
 	//gather variable assignments
 	printf("Lets do some testing.  Enter two numbers when prompted.\n");
-	scanf("%i\n", &x);
-	scanf("%i", &y);
+	scanf("%f\n", &x);
+	scanf("%f", &y);
 	//run the functions
 	operator = assn_operator();
-	result = test_func(x,y);
-	printf("%i\n", result);
+	result = evaluate(operator,x,y);
+	printf("%.0f\n", result);
 	return 0;
 }
