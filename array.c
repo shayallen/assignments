@@ -79,7 +79,7 @@ int main(void){
 			num_correct = num_correct + 0;
 		}
 	}
-	//todo: add a summary and other good stuff
+	//Summary and other good stuff
 	printf("\n\nHere is a summary of the questions and your answers.\n\n");	
 	printf("You answered %.0f out of %.0f correctly, which is %f%%.\n\n",num_correct, question_number, (num_correct/question_number)*100);
 	for(i=0; i<question_number; i++){
