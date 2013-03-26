@@ -51,7 +51,7 @@ int main(void){
 	float num_correct, question_number;
 	int i;
 	struct math_problem data[10];
-	
+	num_correct = 0;
 	//Prompt for the number of questions
 	printf("Welcome! How many questions would you like to answer up to 10?\n");
 	scanf("%f", &question_number);
@@ -81,7 +81,7 @@ int main(void){
 	}
 	//todo: add a summary and other good stuff
 	printf("\n\nHere is a summary of the questions and your answers.\n\n");	
-	printf("You answered %.0f out of %.0f correctly, which is %.0f%%.\n\n",num_correct, question_number, (num_correct/question_number)*100);
+	printf("You answered %.0f out of %.0f correctly, which is %f%%.\n\n",num_correct, question_number, (num_correct/question_number)*100);
 	for(i=0; i<question_number; i++){
 		if (data[i].user_answer == data[i].real_answer){
 		printf("%.0f %c %.0f = %.2f. You answered %.2f, which was correct!\n",data[i].value1, data[i].operator, data[i].value2, data[i].real_answer, data[i].user_answer);
