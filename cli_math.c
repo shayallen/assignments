@@ -73,7 +73,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
-	//Build the logic for the operator practice
+	//Build the logic for the operator practice and implement
 	cli_operator = (argv[2]);
 	printf("%c\n", cli_operator);
 	if(cli_operator>0){
