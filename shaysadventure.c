@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <curses.h>
+#include "kbhit.h"
+#define SLEEP_INCREMENT 10000
 //The point of this program is to build a small choose your own adventure game while testing you math skills.
 
 //Narration
@@ -22,29 +23,20 @@ struct monster_val{
 
 };
 //Sleep function
-int nar_pause(){
-	/*int total_sleep_time;
-	char key_pressed;
-	key_pressed = getchar();	
-	while (total_sleep_time < 2 && !key_pressed){
-		sleep(2);
-		if (key_pressed = true){
-			break;
-		}
-	}
-	return 0;
-	while ( total_sleep_time < 2 && !key_pressed ) {
- 		sleep(.1);
- 		total_sleep_time += .1;
- 	if ( [key pressed] ) key_pressed = true;
-	}*/
-	int kbhit();
-	while (!kbhit()){
-		sleep(2);
-		break;
-		return 0;
-	}
+
+
+int keysleep ( int useconds ) {
+	init_keyboard();
+	int sleep_total = 0;
+ 	do {
+ 		usleep(SLEEP_INCREMENT);
+ 		sleep_total += SLEEP_INCREMENT;
+	} while ( sleep_total < useconds && !kbhit() );
+	readch();
+	close_keyboard();
+	return sleep_total;
 }
+
 //Weapon and armor attributes
 //
 
@@ -64,32 +56,32 @@ int main (void){
 	printf("             /__________/ /\n");
 	printf("             |__________\\/\n\n\n");
 	printf("This is you.\n");
-	nar_pause();
+	keysleep(200000);
 	printf("You are asleep.\n");
-	nar_pause();
+	keysleep(200000);
 	printf("Your math homework is very hard and made you tired.\n");
-	nar_pause();
+	keysleep(200000);
 	printf("But there is no rest in dreams...\n");
-	nar_pause();
+	keysleep(200000);
 	printf("Press enter to continue...\n\n\n");
-	while(getchar() != '\n');
 
 	//First dream scene, choose your path
 	printf("  OOOOO                        ________(*)\n");
 	printf(" OOOOOOO              ________/      \n");
 	printf("OOOOOOOOO     O      \n");
 	printf(" OOOOOOO    --|--    _________________(/)\n");
-	printf("   | |       /\\     \n");
-	printf("   | |      /  \\    _________________(+)\n");
+	printf("   | |       / \\     \n");
+	printf("   | |      /   \\     _________________(+)\n");
 	printf(" vv| |vv         \n");
-	printf("                  ________\n");
-	printf("                            \\_________(-) \n\n\n");
+	printf("      o-|--->        ________\n");
+	printf("                             \\_________(-) \n\n\n");
 	printf("You find yourself in a strange land.\n");
-	nar_pause();
+	keysleep(200000);
+	printf("There is a sword on the ground.  You pick it up.\n");
 	printf("There are four paths ahead.\n");
-	nar_pause();
-	printf("Which one will you take.\n");
-	nar_pause();
+	keysleep(200000);
+	printf("Which one will you take?\n");
+	keysleep(200000);
 
 	//Second dream scene
 	printf(" \n");
@@ -100,5 +92,6 @@ int main (void){
 	printf(" \n");
 	printf(" \n");
 	printf(" \n");
+	
 	return 0;
 }
