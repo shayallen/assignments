@@ -3,27 +3,7 @@
 #include "kbhit.h"
 #include <math.h>
 #define SLEEP_INCREMENT 10000
-//The point of this program is to build a small choose your own adventure game while testing you math skills.
-//Narration
-//Combat logic
-struct combat_logic{
-	float add;
-	float sub;
-	float divide;
-	float mult;
-	
-};
-
-//Character attributes
-struct player_stat{
-	float attack;
-	float defence;
-};
-
-//Enemy attributes
-struct monster_val{
-
-};
+//The point of this program is to build a small and simple choose your own adventure game while testing you math skills.
 
 //Sleep function
 int keysleep ( int useconds ) {
@@ -40,25 +20,6 @@ int keysleep ( int useconds ) {
  	return sleep_total;
 }
 
-/*Assign operator for the questions
-float assn_operator(){
-        srand(time(NULL));
-        int get_operator = rand () % 4;
-        switch(get_operator){
-                case 0:
-                        return '+';
-                case 1:
-                        return '-';
-                case 2:
-                        return '/';
-                case 3:
-                        return '*';
-                default:
-                        return 0;
-        }
-
-}
-*/
 
 // Calculate the real answer
 float evaluate(char operator, float x, float y){
@@ -79,7 +40,7 @@ float evaluate(char operator, float x, float y){
 	}
 }
 
-//Operator ID function
+//Operator ID function and fighting enemy prompt
 int operator_id_func(char operator_id){
         switch(operator_id){
                 case '*':
@@ -96,40 +57,63 @@ int operator_id_func(char operator_id){
 
 }
 
+/*Re_fight path logic
+int re_fight(char re_fight_choice){
+	char operator;
+	printf("Will you fight again? (y/n)\n");
+        scanf("%c", &re_fight_choice);
+        if (re_fight_choice = 'n'){
+		printf("You cowardly run back the direction you came...\n");
+		home_dream();
+	}else{
+		get_question(operator);
+	}
+	return 0;
+}
+*/
+
 //Question generation and evaluation function
 int get_question(char operator){	
 	float value1, value2, user_answer, real_answer;
-	char fight_choice, operator_id;
+	char operator_id, re_fight_choice;
 	operator_id = operator;
-	printf("Will you fight? (y/n)\n");
-	scanf("%c", &fight_choice);
-	if (fight_choice = 'y'){
-		operator_id_func(operator_id);
-		srand(time(NULL));
-		value1 = rand() % 15;
-		value2 = rand() % 15;
-		while (value1<value2){
-			value2 = rand() %15;
-		}
-		printf("%.f %c %.f=", value1, operator, value2);
-	}else{
-		printf("You cowardly run back the direction you came...\n");
-		home_dream();
+	operator_id_func(operator_id);
+	srand(time(NULL));
+	value1 = rand() % 15;
+	value2 = rand() % 15;
+	while (value1<value2){
+		value2 = rand() %15;
 	}
-		real_answer = evaluate(operator, value1, value2);
-		scanf("%f", &user_answer);
+	printf("%.f %c %.f=", value1, operator, value2);
+	real_answer = evaluate(operator, value1, value2);
+	scanf("%f", &user_answer);
 	if (user_answer==real_answer){
-		printf("Excellent!  You have defeated the gunner!\n");
+		printf("Excellent!  You have defeated the enemy!\n");
 		keysleep(2000000);
 	}else{
-		printf("Ooooh, you missed!  Try again?\n");
+		printf("Ooooh, you failed!  Try again?\n");
 		keysleep(2000000);
-		get_question(operator);
+		home_dream();
 	}
 	printf("You victoriously travel back to where you started...\n");
 	keysleep(2000000);
 	home_dream();
 }
+
+//Fight path logic
+int fight(char fight_choice){
+	char operator;
+	printf("Will you fight? (y/n)\n");
+        scanf("%c", &fight_choice);
+        if (fight_choice = 'n'){
+		printf("You cowardly run back the direction you came...\n");
+		home_dream();
+	}else{
+		get_question(operator);
+	}
+	return 0;
+}
+
 //Home path selection screen
 
 //Multiplication path
@@ -149,8 +133,8 @@ int multiplication(){
 	keysleep(4000000);
 	printf("There is an enemy ahead of you with multiplication bombs. He is throwing them everywhere!\n");
 	keysleep(2000000);
-	get_question(operator);
-	
+	fight(fight_choice);	
+
         return 0;
 }
 
@@ -168,8 +152,11 @@ int division(){
 	printf("                                                             \n");
 	printf("                                                             \n\n\n");
 	printf("You find yourself in the land of Division. The annoyance of division makes it depressing here.\n");
-	keysleep(4000000);
-	get_question(operator);
+	keysleep(3000000);
+	printf("There is an enemy ahead of you with an division whips!  He looks really mad.\n");
+	keysleep(2000000);
+	fight(fight_choice);	
+
         return 0;
 }
 
@@ -189,9 +176,10 @@ int addition(){
 	printf("                                                             \n");
 	printf("                                                             \n\n\n");
 	printf("You find yourself in the land of Addition, but something is not adding up... \n");
-	keysleep(4000000);
+	keysleep(3000000);
 	printf("There is an enemy ahead of you with an Addition axe!  He looks really mad.\n");
-	get_question(operator);
+	keysleep(2000000);
+	fight(fight_choice);	
         return 0;
 }
 
@@ -213,7 +201,7 @@ int subtraction(){
 	keysleep(3000000);
 	printf("There is an enemy ahead of you with subtraction guns. He is aiming at your face.\n");
 	keysleep(2000000);
-	get_question(operator);
+	fight(fight_choice);	
         return 0;
 }
 
